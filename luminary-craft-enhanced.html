@@ -1,0 +1,1938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luminary Craft Digital | Church Web Services | Minneapolis-St. Paul</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Luminary Craft Digital creates exceptional websites for churches and ministries across Minneapolis-St. Paul. Custom design, ongoing support, and media services to illuminate your mission online.">
+  <meta name="keywords" content="church website design, Minneapolis church web development, ministry website, Christian web design, church media services, Baptist church websites, Twin Cities web design">
+  <meta name="author" content="Sebastian Basaldua">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Luminary Craft Digital | Church Web Services">
+  <meta property="og:description" content="Exceptional digital experiences for churches. Custom websites, ongoing support, and media services.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://luminarycraftdigital.com">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <style>
+    :root {
+      --navy: #1A2B4C;
+      --navy-light: #2d4a6f;
+      --gold: #C5A059;
+      --gold-light: #d4b06a;
+      --cream: #FAF8F5;
+      --cream-dark: #F0EDE8;
+      --charcoal: #333333;
+      --text-muted: #6b7280;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Crimson Text', Georgia, serif;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    /* Loading Screen */
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: var(--navy);
+      z-index: 10000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+
+    #loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+
+    .loader-logo svg {
+      color: var(--navy);
+      width: 40px;
+      height: 40px;
+    }
+
+    .loader-text {
+      margin-top: 24px;
+      font-family: 'Crimson Text', serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      animation: shimmer 2s linear infinite;
+      background: linear-gradient(90deg, var(--gold), #fff, var(--gold));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(197, 160, 89, 0.3); transform: scale(1); }
+      50% { box-shadow: 0 0 40px rgba(197, 160, 89, 0.6); transform: scale(1.05); }
+    }
+
+    @keyframes shimmer {
+      to { background-position: 200% center; }
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(250, 248, 245, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(26, 43, 76, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    header.scrolled {
+      box-shadow: 0 4px 30px rgba(26, 43, 76, 0.1);
+    }
+
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover .logo-icon {
+      transform: scale(1.05);
+    }
+
+    .logo-icon svg {
+      color: var(--gold);
+      width: 24px;
+      height: 24px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-name {
+      font-family: 'Crimson Text', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: 0.02em;
+    }
+
+    .logo-tagline {
+      font-size: 0.65rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-top: -2px;
+    }
+
+    nav {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+    }
+
+    nav a {
+      padding: 8px 16px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: var(--navy);
+      background: rgba(26, 43, 76, 0.05);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: translateX(-50%);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 60%;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-radius: 0;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--navy);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      border-color: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(197, 160, 89, 0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border-color: var(--navy);
+      color: var(--navy);
+    }
+
+    .btn-outline:hover {
+      background: var(--navy);
+      color: white;
+    }
+
+    .btn-outline-light {
+      background: transparent;
+      border-color: var(--gold);
+      color: white;
+    }
+
+    .btn-outline-light:hover {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .mobile-menu-btn {
+      display: flex;
+      padding: 8px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--navy);
+    }
+
+    @media (min-width: 768px) {
+      .mobile-menu-btn {
+        display: none;
+      }
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 24px 80px;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--navy) 0%, #0f1a2e 50%, var(--navy) 100%);
+      z-index: -2;
+    }
+
+    .hero-pattern {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: 0.03;
+      background-image: 
+        radial-gradient(circle at 2px 2px, var(--gold) 1px, transparent 0);
+      background-size: 40px 40px;
+    }
+
+    .hero-gradient-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      z-index: -1;
+    }
+
+    .hero-gradient-orb.orb-1 {
+      width: 600px;
+      height: 600px;
+      background: rgba(197, 160, 89, 0.15);
+      top: -200px;
+      right: -200px;
+    }
+
+    .hero-gradient-orb.orb-2 {
+      width: 400px;
+      height: 400px;
+      background: rgba(26, 43, 76, 0.3);
+      bottom: -100px;
+      left: -100px;
+    }
+
+    .hero-content {
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    @media (min-width: 1024px) {
+      .hero-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+      }
+    }
+
+    .hero-text {
+      color: white;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(197, 160, 89, 0.1);
+      border: 1px solid rgba(197, 160, 89, 0.3);
+      border-radius: 100px;
+      margin-bottom: 24px;
+      animation: fadeInUp 0.8s ease forwards;
+      opacity: 0;
+    }
+
+    .hero-badge svg {
+      color: var(--gold);
+      width: 16px;
+      height: 16px;
+    }
+
+    .hero-badge span {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      color: white;
+      margin-bottom: 24px;
+      animation: fadeInUp 0.8s ease 0.1s forwards;
+      opacity: 0;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .hero-description {
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 500px;
+      margin-bottom: 32px;
+      animation: fadeInUp 0.8s ease 0.2s forwards;
+      opacity: 0;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      animation: fadeInUp 0.8s ease 0.3s forwards;
+      opacity: 0;
+    }
+
+    .hero-visual {
+      position: relative;
+      animation: fadeInUp 0.8s ease 0.4s forwards;
+      opacity: 0;
+    }
+
+    .hero-showcase {
+      position: relative;
+      perspective: 1000px;
+    }
+
+    .hero-browser {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+      transform: rotateY(-5deg) rotateX(2deg);
+      transition: transform 0.5s ease;
+    }
+
+    .hero-browser:hover {
+      transform: rotateY(0) rotateX(0);
+    }
+
+    .browser-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .browser-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .browser-dot.red { background: #ff5f57; }
+    .browser-dot.yellow { background: #ffbd2e; }
+    .browser-dot.green { background: #28ca41; }
+
+    .browser-url {
+      flex: 1;
+      margin-left: 12px;
+      padding: 6px 12px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .browser-content {
+      height: 300px;
+      background: linear-gradient(180deg, var(--navy) 0%, var(--cream) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .browser-content::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⛪%3C/text%3E%3C/svg%3E");
+      background-size: 80px;
+      opacity: 0.1;
+    }
+
+    .browser-preview-text {
+      text-align: center;
+      z-index: 1;
+    }
+
+    .browser-preview-text h3 {
+      font-family: 'Crimson Text', serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .browser-preview-text p {
+      font-size: 0.875rem;
+      color: var(--charcoal);
+    }
+
+    .floating-badge {
+      position: absolute;
+      padding: 12px 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .floating-badge.badge-1 {
+      top: 20%;
+      left: -20px;
+      animation-delay: 0s;
+    }
+
+    .floating-badge.badge-2 {
+      bottom: 20%;
+      right: -20px;
+      animation-delay: 1s;
+    }
+
+    .floating-badge-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .floating-badge-icon svg {
+      color: var(--navy);
+      width: 20px;
+      height: 20px;
+    }
+
+    .floating-badge-text h4 {
+      font-family: 'Crimson Text', serif;
+      font-size: 1rem;
+      color: var(--navy);
+    }
+
+    .floating-badge-text p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Stats Section */
+    .stats {
+      background: white;
+      padding: 64px 24px;
+      position: relative;
+    }
+
+    .stats::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+    }
+
+    .stats-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .stats-inner {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 24px;
+      border-radius: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .stat-item:hover {
+      background: var(--cream);
+      transform: translateY(-5px);
+    }
+
+    .stat-number {
+      font-family: 'Crimson Text', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-number span {
+      color: var(--gold);
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* Portfolio Section */
+    .portfolio {
+      padding: 100px 24px;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .portfolio::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 0L24 12L12 24L0 12Z' fill='none' stroke='%231A2B4C' stroke-width='0.5' opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 24px 24px;
+      z-index: 0;
+    }
+
+    .portfolio-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+
+    .section-description {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .portfolio-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(26, 43, 76, 0.08);
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    .portfolio-card::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(135deg, var(--gold), var(--navy), var(--gold));
+      border-radius: 18px;
+      opacity: 0;
+      z-index: -1;
+      transition: opacity 0.4s ease;
+    }
+
+    .portfolio-card:hover::before {
+      opacity: 1;
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(26, 43, 76, 0.15);
+    }
+
+    .portfolio-image {
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .portfolio-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .portfolio-card:hover .portfolio-image img {
+      transform: scale(1.1);
+    }
+
+    .portfolio-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(26, 43, 76, 0.9) 100%);
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .portfolio-card:hover .portfolio-overlay {
+      opacity: 1;
+    }
+
+    .portfolio-overlay a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: white;
+      font-weight: 600;
+      font-size: 0.875rem;
+      text-decoration: none;
+    }
+
+    .portfolio-content {
+      padding: 24px;
+    }
+
+    .portfolio-type {
+      display: inline-block;
+      padding: 4px 12px;
+      background: rgba(197, 160, 89, 0.1);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+
+    .portfolio-name {
+      font-size: 1.25rem;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .portfolio-description {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .portfolio-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(26, 43, 76, 0.08);
+    }
+
+    .portfolio-feature {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.75rem;
+      color: var(--charcoal);
+    }
+
+    .portfolio-feature svg {
+      width: 12px;
+      height: 12px;
+      color: var(--gold);
+    }
+
+    /* Services Section */
+    .services {
+      padding: 100px 24px;
+      background: white;
+    }
+
+    .services-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .service-card {
+      padding: 40px 32px;
+      background: var(--cream);
+      border-radius: 16px;
+      border-left: 4px solid var(--gold);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, rgba(197, 160, 89, 0.1), transparent);
+      border-radius: 0 16px 0 100px;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(26, 43, 76, 0.1);
+    }
+
+    .service-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      transition: transform 0.3s ease;
+    }
+
+    .service-card:hover .service-icon {
+      transform: scale(1.1);
+    }
+
+    .service-icon svg {
+      color: var(--gold);
+      width: 28px;
+      height: 28px;
+    }
+
+    .service-title {
+      font-size: 1.5rem;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+
+    .service-description {
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .service-list {
+      list-style: none;
+    }
+
+    .service-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 8px 0;
+      font-size: 0.875rem;
+      color: var(--charcoal);
+    }
+
+    .service-list li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+
+    /* Process Section */
+    .process {
+      padding: 100px 24px;
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .process::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.02;
+    }
+
+    .process-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .process .section-header {
+      color: white;
+    }
+
+    .process .section-title {
+      color: white;
+    }
+
+    .process .section-description {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .process-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .process-card {
+      padding: 32px 24px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(197, 160, 89, 0.2);
+      border-radius: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .process-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--gold);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .process-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Crimson Text', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 20px;
+    }
+
+    .process-card h3 {
+      font-size: 1.25rem;
+      color: white;
+      margin-bottom: 12px;
+    }
+
+    .process-card p {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.7;
+    }
+
+    /* Testimonials Section */
+    .testimonials {
+      padding: 100px 24px;
+      background: var(--cream-dark);
+    }
+
+    .testimonials-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .testimonial-card {
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(26, 43, 76, 0.08);
+      position: relative;
+    }
+
+    .testimonial-quote {
+      position: absolute;
+      top: 20px;
+      left: 24px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .testimonial-quote svg {
+      color: white;
+      width: 20px;
+      height: 20px;
+    }
+
+    .testimonial-text {
+      font-size: 1.125rem;
+      color: var(--charcoal);
+      font-style: italic;
+      line-height: 1.8;
+      margin-bottom: 24px;
+      padding-top: 24px;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .testimonial-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-family: 'Crimson Text', serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+
+    .testimonial-info h4 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .testimonial-info p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    /* CTA Section */
+    .cta {
+      padding: 100px 24px;
+      background: linear-gradient(135deg, var(--navy) 0%, #0f1a2e 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(197, 160, 89, 0.15), transparent 70%);
+      border-radius: 50%;
+    }
+
+    .cta-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: white;
+      margin-bottom: 16px;
+    }
+
+    .cta p {
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 32px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    /* Footer */
+    footer {
+      background: #0a1628;
+      color: white;
+      padding: 80px 24px 40px;
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gold);
+    }
+
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    @media (min-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 2fr 1fr 1fr;
+      }
+    }
+
+    .footer-brand .logo {
+      margin-bottom: 20px;
+    }
+
+    .footer-brand .logo-name {
+      color: white;
+    }
+
+    .footer-brand p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.875rem;
+      line-height: 1.8;
+      max-width: 300px;
+    }
+
+    .footer-contact {
+      margin-top: 24px;
+    }
+
+    .footer-contact a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      font-size: 0.875rem;
+      margin-bottom: 12px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-contact a:hover {
+      color: var(--gold);
+    }
+
+    .footer-contact svg {
+      width: 16px;
+      height: 16px;
+      color: var(--gold);
+    }
+
+    .footer-column h4 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 24px;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      padding-top: 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+    }
+
+    .footer-bottom p {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: var(--navy);
+      z-index: 2000;
+      display: flex;
+      flex-direction: column;
+      padding: 80px 24px 24px;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .mobile-menu.open {
+      transform: translateX(0);
+    }
+
+    .mobile-menu-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      padding: 8px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    .mobile-menu nav {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mobile-menu nav a {
+      padding: 16px;
+      font-size: 1.25rem;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+
+    .mobile-menu nav a:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .mobile-menu .btn {
+      margin-top: 24px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Loader -->
+  <div id="loader">
+    <div class="loader-logo">
+      <i data-lucide="sparkles"></i>
+    </div>
+    <div class="loader-text">Luminary Craft</div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" onclick="closeMobileMenu()">
+      <i data-lucide="x"></i>
+    </button>
+    <nav>
+      <a href="#home" onclick="closeMobileMenu()">Home</a>
+      <a href="#portfolio" onclick="closeMobileMenu()">Portfolio</a>
+      <a href="#services" onclick="closeMobileMenu()">Services</a>
+      <a href="#process" onclick="closeMobileMenu()">Process</a>
+      <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+    </nav>
+    <a href="#contact" class="btn btn-primary" onclick="closeMobileMenu()">Get Started</a>
+  </div>
+
+  <!-- Header -->
+  <header id="header">
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <div class="logo-icon">
+          <i data-lucide="sparkles"></i>
+        </div>
+        <div class="logo-text">
+          <span class="logo-name">Luminary Craft</span>
+          <span class="logo-tagline">Illuminate Your Mission</span>
+        </div>
+      </a>
+      
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      
+      <a href="#contact" class="btn btn-primary" style="display: none;">
+        Get Started <i data-lucide="arrow-right"></i>
+      </a>
+      
+      <button class="mobile-menu-btn" onclick="openMobileMenu()">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-pattern"></div>
+    <div class="hero-gradient-orb orb-1"></div>
+    <div class="hero-gradient-orb orb-2"></div>
+    
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <i data-lucide="church"></i>
+          <span>Church Web Services</span>
+        </div>
+        
+        <h1>
+          Illuminate your
+          <span>mission</span>
+        </h1>
+        
+        <p class="hero-description">
+          We craft exceptional digital experiences for churches across the Minneapolis–St. Paul area. From custom websites to ongoing support, we help your ministry shine online.
+        </p>
+        
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary">
+            Get Started <i data-lucide="arrow-right"></i>
+          </a>
+          <a href="#portfolio" class="btn btn-outline-light">
+            View Our Work
+          </a>
+        </div>
+      </div>
+      
+      <div class="hero-visual">
+        <div class="hero-showcase">
+          <div class="hero-browser">
+            <div class="browser-header">
+              <span class="browser-dot red"></span>
+              <span class="browser-dot yellow"></span>
+              <span class="browser-dot green"></span>
+              <span class="browser-url">fourthbaptist.org</span>
+            </div>
+            <div class="browser-content">
+              <div class="browser-preview-text">
+                <h3>Fourth Baptist Church</h3>
+                <p>Gospel-Centered Ministry</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="floating-badge badge-1">
+            <div class="floating-badge-icon">
+              <i data-lucide="check-circle"></i>
+            </div>
+            <div class="floating-badge-text">
+              <h4>Mobile Ready</h4>
+              <p>Responsive Design</p>
+            </div>
+          </div>
+          
+          <div class="floating-badge badge-2">
+            <div class="floating-badge-icon">
+              <i data-lucide="zap"></i>
+            </div>
+            <div class="floating-badge-text">
+              <h4>Fast Loading</h4>
+              <p>Optimized Performance</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-number">3<span>+</span></div>
+        <div class="stat-label">Churches Served</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">3.6<span>M</span></div>
+        <div class="stat-label">Broadcast Reach</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">100<span>%</span></div>
+        <div class="stat-label">Client Satisfaction</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">Ongoing Support</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section class="portfolio" id="portfolio">
+    <div class="portfolio-inner">
+      <div class="section-header">
+        <div class="section-label">
+          <i data-lucide="briefcase"></i>
+          Our Work
+        </div>
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-description">
+          Explore our recent church website projects, each crafted with care to serve their unique ministry needs.
+        </p>
+      </div>
+      
+      <div class="portfolio-grid">
+        <!-- Fourth Baptist -->
+        <div class="portfolio-card">
+          <div class="portfolio-image">
+            <img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=600&h=400&fit=crop" alt="Fourth Baptist Church">
+            <div class="portfolio-overlay">
+              <a href="https://fourthbaptist.org" target="_blank">
+                Visit Site <i data-lucide="external-link"></i>
+              </a>
+            </div>
+          </div>
+          <div class="portfolio-content">
+            <span class="portfolio-type">Church Website</span>
+            <h3 class="portfolio-name">Fourth Baptist Church</h3>
+            <p class="portfolio-description">
+              A comprehensive church website with sermon archive integration, live streaming, event calendar, and elegant traditional design befitting a historic Plymouth congregation.
+            </p>
+            <div class="portfolio-features">
+              <span class="portfolio-feature"><i data-lucide="check"></i> SermonAudio Integration</span>
+              <span class="portfolio-feature"><i data-lucide="check"></i> Live Streaming</span>
+              <span class="portfolio-feature"><i data-lucide="check"></i> Event Calendar</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Bryant Avenue Baptist -->
+        <div class="portfolio-card">
+          <div class="portfolio-image">
+            <img src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=600&h=400&fit=crop" alt="Bryant Avenue Baptist Church">
+            <div class="portfolio-overlay">
+              <a href="https://bryantavenuebaptist.org" target="_blank">
+                Visit Site <i data-lucide="external-link"></i>
+              </a>
+            </div>
+          </div>
+          <div class="portfolio-content">
+            <span class="portfolio-type">Church Website</span>
+            <h3 class="portfolio-name">Bryant Avenue Baptist</h3>
+            <p class="portfolio-description">
+              A modern, visitor-focused website with video hero, clear visitor pathways, sermon integration, and community ministry highlights including their food pantry outreach.
+            </p>
+            <div class="portfolio-features">
+              <span class="portfolio-feature"><i data-lucide="check"></i> Video Hero</span>
+              <span class="portfolio-feature"><i data-lucide="check"></i> Visitor Focused</span>
+              <span class="portfolio-feature"><i data-lucide="check"></i> Ministry Showcase</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- WCTS Radio -->
+        <div class="portfolio-card">
+          <div class="portfolio-image">
+            <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600&h=400&fit=crop" alt="WCTS Radio">
+            <div class="portfolio-overlay">
+              <a href="https://wctsradio.org" target="_blank">
+                Visit Site <i data-lucide="external-link"></i>
+              </a>
+            </div>
+          </div>
+          <div class="portfolio-content">
+            <span class="portfolio-type">Radio Station</span>
+            <h3 class="portfolio-name">WCTS Radio</h3>
+            <p class="portfolio-description">
+              A sophisticated broadcast station website featuring live streaming audio player, dual-stream support, Bible reading player, and PWA capabilities for mobile listeners.
+            </p>
+            <div class="portfolio-features">
+              <span class="portfolio-feature"><i data-lucide="check"></i> Live Streaming</span>
+              <span class="portfolio-feature"><i data-lucide="check"></i> Bible Reading Player</span>
+              <span class="portfolio-feature"><i data-lucide="check"></i> PWA Ready</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services" id="services">
+    <div class="services-inner">
+      <div class="section-header">
+        <div class="section-label">
+          <i data-lucide="layers"></i>
+          What We Offer
+        </div>
+        <h2 class="section-title">Services Tailored for Ministry</h2>
+        <p class="section-description">
+          We understand the unique needs of churches and design our services to support your mission.
+        </p>
+      </div>
+      
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <i data-lucide="globe"></i>
+          </div>
+          <h3 class="service-title">Website Design</h3>
+          <p class="service-description">
+            Custom, responsive websites built specifically for churches. Clear navigation, beautiful design, and easy content management.
+          </p>
+          <ul class="service-list">
+            <li>Custom branded design tailored to your church identity</li>
+            <li>Mobile-responsive for all devices</li>
+            <li>SEO optimized for local discovery</li>
+            <li>Sermon integration (SermonAudio, SoundCloud)</li>
+            <li>Event calendar and announcements</li>
+          </ul>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <i data-lucide="headphones"></i>
+          </div>
+          <h3 class="service-title">Ongoing Support</h3>
+          <p class="service-description">
+            Focus on ministry while we handle your website. Regular updates, sermon processing, and dedicated support.
+          </p>
+          <ul class="service-list">
+            <li>Weekly content updates and maintenance</li>
+            <li>Sermon audio/video processing</li>
+            <li>Technical support and troubleshooting</li>
+            <li>Security updates and backups</li>
+            <li>Analytics and performance monitoring</li>
+          </ul>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <i data-lucide="camera"></i>
+          </div>
+          <h3 class="service-title">Media Services</h3>
+          <p class="service-description">
+            Professional photography and videography to capture your church community and tell your story authentically.
+          </p>
+          <ul class="service-list">
+            <li>Professional photography sessions</li>
+            <li>Video production and editing</li>
+            <li>Motion graphics and animations</li>
+            <li>Social media ready content</li>
+            <li>Broadcast media support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="process" id="process">
+    <div class="process-inner">
+      <div class="section-header">
+        <div class="section-label">
+          <i data-lucide="git-branch"></i>
+          Our Process
+        </div>
+        <h2 class="section-title">How We Work</h2>
+        <p class="section-description">
+          A streamlined approach that respects your time and delivers exceptional results.
+        </p>
+      </div>
+      
+      <div class="process-grid">
+        <div class="process-card">
+          <div class="process-number">1</div>
+          <h3>Discovery</h3>
+          <p>We learn about your church, ministry goals, and congregation needs through a personal consultation.</p>
+        </div>
+        
+        <div class="process-card">
+          <div class="process-number">2</div>
+          <h3>Design</h3>
+          <p>We create a custom design that reflects your church's identity and connects with your community.</p>
+        </div>
+        
+        <div class="process-card">
+          <div class="process-number">3</div>
+          <h3>Build</h3>
+          <p>We develop your site with modern technology, ensuring it's fast, secure, and easy to manage.</p>
+        </div>
+        
+        <div class="process-card">
+          <div class="process-number">4</div>
+          <h3>Launch & Support</h3>
+          <p>We launch your site and provide ongoing support to keep your digital presence thriving.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <div class="testimonials-inner">
+      <div class="section-header">
+        <div class="section-label">
+          <i data-lucide="heart"></i>
+          Testimonials
+        </div>
+        <h2 class="section-title">Trusted by Churches</h2>
+        <p class="section-description">
+          Hear from the ministries we've had the privilege to serve.
+        </p>
+      </div>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-quote">
+            <i data-lucide="quote"></i>
+          </div>
+          <p class="testimonial-text">
+            "Luminary Craft understood exactly what our church needed. The website has been instrumental in connecting with our community and extending our gospel ministry online."
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">MM</div>
+            <div class="testimonial-info">
+              <h4>Pastor Matt Morrell</h4>
+              <p>Senior Pastor, Fourth Baptist Church</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-quote">
+            <i data-lucide="quote"></i>
+          </div>
+          <p class="testimonial-text">
+            "The ongoing support is invaluable. We can focus on ministry while knowing our digital presence is in expert hands. They truly understand church needs."
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">ST</div>
+            <div class="testimonial-info">
+              <h4>Sarah Thompson</h4>
+              <p>Administrative Director, Bryant Avenue Baptist</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta" id="contact">
+    <div class="cta-inner">
+      <h2>Ready to illuminate your ministry online?</h2>
+      <p>
+        Let's discuss how we can help your church connect with your community through a beautiful, functional website.
+      </p>
+      <div class="cta-buttons">
+        <a href="mailto:contact@luminarycraftdigital.com" class="btn btn-primary">
+          Request a Quote <i data-lucide="arrow-right"></i>
+        </a>
+        <a href="tel:+1234567890" class="btn btn-outline-light">
+          <i data-lucide="phone"></i> Schedule a Call
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <div class="logo-icon">
+              <i data-lucide="sparkles"></i>
+            </div>
+            <div class="logo-text">
+              <span class="logo-name">Luminary Craft</span>
+              <span class="logo-tagline">Illuminate Your Mission</span>
+            </div>
+          </a>
+          <p>
+            Crafting exceptional digital experiences for churches across the Minneapolis–St. Paul area. We illuminate your mission with thoughtful design and dedicated support.
+          </p>
+          <div class="footer-contact">
+            <a href="mailto:contact@luminarycraftdigital.com">
+              <i data-lucide="mail"></i>
+              contact@luminarycraftdigital.com
+            </a>
+            <a href="#">
+              <i data-lucide="map-pin"></i>
+              Minneapolis–St. Paul, MN
+            </a>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="#services">Website Design</a></li>
+            <li><a href="#services">Ongoing Support</a></li>
+            <li><a href="#services">Media Services</a></li>
+            <li><a href="#services">Sermon Processing</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2026 Luminary Craft Digital. All rights reserved.</p>
+        <p>Crafted with care for ministry.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // Loading screen
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loader').classList.add('hidden');
+      }, 1500);
+    });
+
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile menu
+    function openMobileMenu() {
+      document.getElementById('mobileMenu').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileMenu() {
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const headerOffset = 80;
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Animate elements on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Add animation to elements
+    document.querySelectorAll('.portfolio-card, .service-card, .process-card, .testimonial-card, .stat-item').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+
+    // Stagger animation delays
+    document.querySelectorAll('.portfolio-card').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.1}s`;
+    });
+
+    document.querySelectorAll('.process-card').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.1}s`;
+    });
+
+    document.querySelectorAll('.stat-item').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.1}s`;
+    });
+  </script>
+</body>
+</html>
