@@ -15,6 +15,20 @@
   <meta property="og:description" content="Exceptional digital experiences for churches. Custom websites, ongoing support, and media services.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://luminarycraftdigital.com">
+  <meta property="og:image" content="https://luminarycraftdigital.com/assets/images/social-share.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Luminary Craft Digital">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Luminary Craft Digital | Church Web Services">
+  <meta name="twitter:description" content="Exceptional digital experiences for churches. Custom websites, ongoing support, and media services.">
+  <meta name="twitter:image" content="https://luminarycraftdigital.com/assets/images/social-share.jpg">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://luminarycraftdigital.com">
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,6 +37,18 @@
   
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1JZNXJ7ZCK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-1JZNXJ7ZCK');
+  </script>
   
   <style>
     :root {
@@ -116,6 +142,61 @@
 
     @keyframes shimmer {
       to { background-position: 200% center; }
+    }
+
+    .loader-progress {
+      width: 200px;
+      height: 3px;
+      background: rgba(197, 160, 89, 0.2);
+      margin-top: 24px;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .loader-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      width: 0%;
+      transition: width 0.3s ease;
+      border-radius: 3px;
+    }
+
+    .loader-percentage {
+      margin-top: 12px;
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.5);
+      letter-spacing: 0.1em;
+    }
+
+    /* Lazy Loading Styles */
+    .lazy-image {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .lazy-image.loaded {
+      opacity: 1;
+    }
+
+    .image-placeholder {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .image-placeholder::after {
+      content: '';
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--gold);
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
 
     /* Header */
@@ -1368,6 +1449,460 @@
     .mobile-menu .btn {
       margin-top: 24px;
     }
+
+    /* Contact Form Styles */
+    .contact-form {
+      max-width: 600px;
+      margin: 40px auto 0;
+      text-align: left;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    @media (min-width: 600px) {
+      .form-row {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.9);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 18px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(197, 160, 89, 0.3);
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+      background: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.15);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      justify-content: center;
+      padding: 16px 32px;
+      font-size: 1rem;
+    }
+
+    .btn-submit .spin {
+      animation: spin 1s linear infinite;
+    }
+
+    .btn-submit .btn-loading {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .form-status {
+      margin-top: 16px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      text-align: center;
+      display: none;
+    }
+
+    .form-status.success {
+      display: block;
+      background: rgba(34, 197, 94, 0.15);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      color: #86efac;
+    }
+
+    .form-status.error {
+      display: block;
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #fca5a5;
+    }
+
+    .form-status.sending {
+      display: block;
+      background: rgba(197, 160, 89, 0.15);
+      border: 1px solid rgba(197, 160, 89, 0.3);
+      color: var(--gold);
+    }
+
+    .cta-divider {
+      display: flex;
+      align-items: center;
+      margin: 40px 0;
+    }
+
+    .cta-divider::before,
+    .cta-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .cta-divider span {
+      padding: 0 20px;
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* Portfolio Modal */
+    .portfolio-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 5000;
+      overflow: auto;
+      background: rgba(10, 22, 40, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .portfolio-modal.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+    }
+
+    .modal-content {
+      position: relative;
+      max-width: 900px;
+      width: 90%;
+      max-height: 90vh;
+      margin: 20px;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+      transform: translateY(30px) scale(0.95);
+      transition: transform 0.4s ease;
+    }
+
+    .portfolio-modal.active .modal-content {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--navy);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: all 0.3s ease;
+    }
+
+    .modal-close:hover {
+      background: var(--gold);
+      transform: rotate(90deg);
+    }
+
+    .modal-close svg {
+      color: white;
+      width: 24px;
+      height: 24px;
+    }
+
+    .modal-close:hover svg {
+      color: var(--navy);
+    }
+
+    .modal-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    }
+
+    @media (min-width: 768px) {
+      .modal-image {
+        height: 400px;
+      }
+    }
+
+    .modal-body {
+      padding: 32px;
+    }
+
+    .modal-type {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(197, 160, 89, 0.1);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+
+    .modal-title {
+      font-size: 2rem;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+
+    .modal-description {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .modal-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(26, 43, 76, 0.1);
+    }
+
+    .modal-feature {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      background: var(--cream);
+      border-radius: 8px;
+      font-size: 0.875rem;
+      color: var(--charcoal);
+    }
+
+    .modal-feature svg {
+      width: 16px;
+      height: 16px;
+      color: var(--gold);
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 30px rgba(197, 160, 89, 0.4);
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(197, 160, 89, 0.5);
+    }
+
+    .back-to-top svg {
+      color: var(--navy);
+      width: 24px;
+      height: 24px;
+    }
+
+    /* Enhanced Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: rgba(26, 43, 76, 0.98);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 2000;
+      display: flex;
+      flex-direction: column;
+      padding: 100px 24px 40px;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .mobile-menu.open {
+      transform: translateX(0);
+    }
+
+    .mobile-menu-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1999;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .mobile-menu-backdrop.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-menu-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 48px;
+      height: 48px;
+      padding: 0;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(197, 160, 89, 0.3);
+      border-radius: 12px;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-menu-close:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .mobile-menu-close:hover svg {
+      color: var(--navy);
+    }
+
+    .mobile-menu nav {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+    }
+
+    .mobile-menu nav a {
+      padding: 18px 20px;
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      border-left: 3px solid transparent;
+    }
+
+    .mobile-menu nav a:hover {
+      background: rgba(197, 160, 89, 0.1);
+      color: white;
+      border-left-color: var(--gold);
+      padding-left: 24px;
+    }
+
+    .mobile-menu .btn {
+      margin-top: auto;
+      justify-content: center;
+    }
+
+    /* Scroll Reveal Animation Classes */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal-left.revealed {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal-right.revealed {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal-scale.revealed {
+      opacity: 1;
+      transform: scale(1);
+    }
   </style>
 </head>
 <body>
@@ -1377,6 +1912,10 @@
       <i data-lucide="sparkles"></i>
     </div>
     <div class="loader-text">Luminary Craft</div>
+    <div class="loader-progress">
+      <div class="loader-progress-fill" id="loaderProgress"></div>
+    </div>
+    <div class="loader-percentage" id="loaderPercentage">0%</div>
   </div>
 
   <!-- Mobile Menu -->
@@ -1537,11 +2076,23 @@
       
       <div class="portfolio-grid">
         <!-- Fourth Baptist -->
-        <div class="portfolio-card">
-          <div class="portfolio-image">
-            <img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=600&h=400&fit=crop" alt="Fourth Baptist Church">
+        <div class="portfolio-card"
+          data-modal-type="Church Website"
+          data-modal-title="Fourth Baptist Church"
+          data-modal-image="assets/images/portfolio/fourthbaptist-preview.jpg"
+          data-modal-description="A comprehensive church website serving Fourth Baptist Church in Plymouth, Minnesota. Features include seamless SermonAudio integration for their extensive sermon archive, live streaming capabilities for Sunday services, an interactive event calendar, and an elegant traditional design that honors this historic congregation's rich heritage. The site is fully responsive and optimized for visitors seeking a gospel-centered church community."
+          data-modal-features="SermonAudio Integration,Live Streaming,Event Calendar,Responsive Design,Staff Directory"
+          data-modal-link="https://fourthbaptist.org"
+          onclick="openPortfolioModal(this)">
+          <div class="portfolio-image image-placeholder">
+            <img
+              class="lazy-image"
+              data-src="assets/images/portfolio/fourthbaptist-preview.jpg"
+              alt="Fourth Baptist Church"
+              loading="lazy"
+            >
             <div class="portfolio-overlay">
-              <a href="https://fourthbaptist.org" target="_blank">
+              <a href="https://fourthbaptist.org" target="_blank" onclick="event.stopPropagation()">
                 Visit Site <i data-lucide="external-link"></i>
               </a>
             </div>
@@ -1559,13 +2110,25 @@
             </div>
           </div>
         </div>
-        
+
         <!-- Bryant Avenue Baptist -->
-        <div class="portfolio-card">
-          <div class="portfolio-image">
-            <img src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=600&h=400&fit=crop" alt="Bryant Avenue Baptist Church">
+        <div class="portfolio-card"
+          data-modal-type="Church Website"
+          data-modal-title="Bryant Avenue Baptist Church"
+          data-modal-image="assets/images/portfolio/bryantavenue-preview.jpg"
+          data-modal-description="A modern, visitor-focused website designed for Bryant Avenue Baptist Church in Minneapolis. The site features an engaging video hero section, clear pathways for first-time visitors, seamless sermon integration, and dedicated sections highlighting their community ministries including their food pantry outreach. Built with accessibility in mind and optimized for both desktop and mobile experiences."
+          data-modal-features="Video Hero,Visitor Pathways,Ministry Showcase,Mobile Optimized,Contact Forms"
+          data-modal-link="https://bryantavenuebaptist.org"
+          onclick="openPortfolioModal(this)">
+          <div class="portfolio-image image-placeholder">
+            <img
+              class="lazy-image"
+              data-src="assets/images/portfolio/bryantavenue-preview.jpg"
+              alt="Bryant Avenue Baptist Church"
+              loading="lazy"
+            >
             <div class="portfolio-overlay">
-              <a href="https://bryantavenuebaptist.org" target="_blank">
+              <a href="https://bryantavenuebaptist.org" target="_blank" onclick="event.stopPropagation()">
                 Visit Site <i data-lucide="external-link"></i>
               </a>
             </div>
@@ -1583,13 +2146,25 @@
             </div>
           </div>
         </div>
-        
+
         <!-- WCTS Radio -->
-        <div class="portfolio-card">
-          <div class="portfolio-image">
-            <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600&h=400&fit=crop" alt="WCTS Radio">
+        <div class="portfolio-card"
+          data-modal-type="Radio Station"
+          data-modal-title="WCTS Radio - The Bible Station"
+          data-modal-image="assets/images/portfolio/wctsradio-preview.jpg"
+          data-modal-description="A sophisticated broadcast station website for WCTS Radio, serving the Twin Cities with Christian programming. Features include a custom live streaming audio player with dual-stream support, a dedicated Bible reading player, program schedule integration, and Progressive Web App (PWA) capabilities allowing listeners to install the site as a mobile app. The site reaches over 3.6 million potential listeners across the Minneapolis-St. Paul metro area."
+          data-modal-features="Live Audio Streaming,Bible Reading Player,PWA Ready,Program Schedule,Mobile App"
+          data-modal-link="https://wctsradio.org"
+          onclick="openPortfolioModal(this)">
+          <div class="portfolio-image image-placeholder">
+            <img
+              class="lazy-image"
+              data-src="assets/images/portfolio/wctsradio-preview.jpg"
+              alt="WCTS Radio"
+              loading="lazy"
+            >
             <div class="portfolio-overlay">
-              <a href="https://wctsradio.org" target="_blank">
+              <a href="https://wctsradio.org" target="_blank" onclick="event.stopPropagation()">
                 Visit Site <i data-lucide="external-link"></i>
               </a>
             </div>
@@ -1772,23 +2347,87 @@
     </div>
   </section>
 
-  <!-- CTA Section -->
+  <!-- Contact Section -->
   <section class="cta" id="contact">
     <div class="cta-inner">
       <h2>Ready to illuminate your ministry online?</h2>
       <p>
         Let's discuss how we can help your church connect with your community through a beautiful, functional website.
       </p>
+
+      <!-- Contact Form -->
+      <form id="contactForm" class="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="contactName">Your Name</label>
+            <input type="text" id="contactName" name="name" required placeholder="Pastor John Smith">
+          </div>
+          <div class="form-group">
+            <label for="contactEmail">Email Address</label>
+            <input type="email" id="contactEmail" name="email" required placeholder="pastor@yourchurch.org">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="contactChurch">Church Name</label>
+          <input type="text" id="contactChurch" name="church" placeholder="First Community Church">
+        </div>
+        <div class="form-group">
+          <label for="contactMessage">Tell us about your project</label>
+          <textarea id="contactMessage" name="message" rows="4" required placeholder="We're looking for a new website that..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-submit">
+          <span class="btn-text">Send Message</span>
+          <span class="btn-loading" style="display: none;">
+            <i data-lucide="loader-2" class="spin"></i> Sending...
+          </span>
+          <i data-lucide="arrow-right" class="btn-icon"></i>
+        </button>
+        <p id="formStatus" class="form-status"></p>
+      </form>
+
+      <div class="cta-divider">
+        <span>or reach out directly</span>
+      </div>
+
       <div class="cta-buttons">
-        <a href="mailto:contact@luminarycraftdigital.com" class="btn btn-primary">
-          Request a Quote <i data-lucide="arrow-right"></i>
-        </a>
-        <a href="tel:+1234567890" class="btn btn-outline-light">
-          <i data-lucide="phone"></i> Schedule a Call
+        <a href="mailto:sebastian@luminarycraftdigital.com" class="btn btn-outline-light">
+          <i data-lucide="mail"></i> sebastian@luminarycraftdigital.com
         </a>
       </div>
     </div>
   </section>
+
+  <!-- Portfolio Modal -->
+  <div class="portfolio-modal" id="portfolioModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closePortfolioModal()">
+        <i data-lucide="x"></i>
+      </button>
+      <img class="modal-image" id="modalImage" src="" alt="">
+      <div class="modal-body">
+        <span class="modal-type" id="modalType"></span>
+        <h3 class="modal-title" id="modalTitle"></h3>
+        <p class="modal-description" id="modalDescription"></p>
+        <div class="modal-features" id="modalFeatures"></div>
+        <div class="modal-actions">
+          <a href="#" class="btn btn-primary" id="modalLink" target="_blank">
+            Visit Live Site <i data-lucide="external-link"></i>
+          </a>
+          <button class="btn btn-outline" onclick="closePortfolioModal()">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Backdrop -->
+  <div class="mobile-menu-backdrop" id="mobileBackdrop" onclick="closeMobileMenu()"></div>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+    <i data-lucide="arrow-up"></i>
+  </button>
 
   <!-- Footer -->
   <footer>
@@ -1808,13 +2447,13 @@
             Crafting exceptional digital experiences for churches across the Minneapolis–St. Paul area. We illuminate your mission with thoughtful design and dedicated support.
           </p>
           <div class="footer-contact">
-            <a href="mailto:contact@luminarycraftdigital.com">
+            <a href="mailto:sebastian@luminarycraftdigital.com">
               <i data-lucide="mail"></i>
-              contact@luminarycraftdigital.com
+              sebastian@luminarycraftdigital.com
             </a>
             <a href="#">
               <i data-lucide="map-pin"></i>
-              Minneapolis–St. Paul, MN
+              Plymouth, Minnesota
             </a>
           </div>
         </div>
@@ -1852,12 +2491,146 @@
     // Initialize Lucide icons
     lucide.createIcons();
 
-    // Loading screen
+    // Initialize EmailJS
+    emailjs.init("BP2BigTLAntfpaGg1");
+
+    // Loading screen with progress bar
     window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.getElementById('loader').classList.add('hidden');
-      }, 1500);
+      const loader = document.getElementById('loader');
+      const progressBar = document.getElementById('loaderProgress');
+      const percentageText = document.getElementById('loaderPercentage');
+      let progress = 0;
+
+      const interval = setInterval(() => {
+        progress += Math.random() * 15 + 5;
+        if (progress > 100) progress = 100;
+
+        progressBar.style.width = progress + '%';
+        percentageText.textContent = Math.floor(progress) + '%';
+
+        if (progress >= 100) {
+          clearInterval(interval);
+          setTimeout(() => {
+            loader.classList.add('hidden');
+          }, 300);
+        }
+      }, 100);
     });
+
+    // Lazy Loading for Portfolio Images
+    const setupLazyLoading = () => {
+      const lazyImages = document.querySelectorAll('.lazy-image');
+
+      const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            const src = img.dataset.src;
+
+            if (src) {
+              img.src = src;
+              img.onload = () => {
+                img.classList.add('loaded');
+                const placeholder = img.closest('.image-placeholder');
+                if (placeholder) {
+                  placeholder.classList.remove('image-placeholder');
+                }
+              };
+              img.onerror = () => {
+                // Fallback to a placeholder if image fails to load
+                img.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400"><rect fill="%231A2B4C" width="600" height="400"/><text x="50%" y="50%" fill="%23C5A059" text-anchor="middle" dy=".3em" font-family="Georgia" font-size="24">Image Coming Soon</text></svg>';
+                img.classList.add('loaded');
+              };
+            }
+            imageObserver.unobserve(img);
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '50px'
+      });
+
+      lazyImages.forEach(img => {
+        imageObserver.observe(img);
+      });
+    };
+
+    // Run lazy loading setup
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setupLazyLoading);
+    } else {
+      setupLazyLoading();
+    }
+
+    // Contact Form Handler with EmailJS
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const submitBtn = contactForm.querySelector('.btn-submit');
+        const btnText = submitBtn.querySelector('.btn-text');
+        const btnLoading = submitBtn.querySelector('.btn-loading');
+        const btnIcon = submitBtn.querySelector('.btn-icon');
+
+        // Show loading state
+        btnText.style.display = 'none';
+        btnIcon.style.display = 'none';
+        btnLoading.style.display = 'inline-flex';
+        submitBtn.disabled = true;
+
+        formStatus.className = 'form-status sending';
+        formStatus.textContent = 'Sending your message...';
+        formStatus.style.display = 'block';
+
+        // Send via EmailJS
+        emailjs.sendForm('service_g7kbu63', 'template_shv139p', contactForm)
+          .then(() => {
+            // Track successful submission
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'contact_form_submit', {
+                'event_category': 'engagement',
+                'event_label': 'success'
+              });
+            }
+
+            formStatus.className = 'form-status success';
+            formStatus.textContent = 'Thank you! Your message has been sent. We\'ll be in touch soon.';
+            contactForm.reset();
+
+            // Reset button
+            btnText.style.display = 'inline';
+            btnIcon.style.display = 'inline';
+            btnLoading.style.display = 'none';
+            submitBtn.disabled = false;
+
+            // Reinitialize icons
+            lucide.createIcons();
+
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+              formStatus.style.display = 'none';
+            }, 5000);
+          })
+          .catch((error) => {
+            console.error('EmailJS Error:', error);
+
+            formStatus.className = 'form-status error';
+            formStatus.textContent = 'Something went wrong. Please try again or email us directly.';
+
+            // Reset button
+            btnText.style.display = 'inline';
+            btnIcon.style.display = 'inline';
+            btnLoading.style.display = 'none';
+            submitBtn.disabled = false;
+
+            // Reinitialize icons
+            lucide.createIcons();
+          });
+      });
+    }
 
     // Header scroll effect
     const header = document.getElementById('header');
@@ -1869,16 +2642,105 @@
       }
     });
 
-    // Mobile menu
+    // Mobile menu with backdrop
     function openMobileMenu() {
       document.getElementById('mobileMenu').classList.add('open');
+      document.getElementById('mobileBackdrop').classList.add('visible');
       document.body.style.overflow = 'hidden';
     }
 
     function closeMobileMenu() {
       document.getElementById('mobileMenu').classList.remove('open');
+      document.getElementById('mobileBackdrop').classList.remove('visible');
       document.body.style.overflow = '';
     }
+
+    // Portfolio Modal
+    function openPortfolioModal(card) {
+      const modal = document.getElementById('portfolioModal');
+      const modalImage = document.getElementById('modalImage');
+      const modalType = document.getElementById('modalType');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalDescription = document.getElementById('modalDescription');
+      const modalFeatures = document.getElementById('modalFeatures');
+      const modalLink = document.getElementById('modalLink');
+
+      // Get data from card
+      const type = card.dataset.modalType;
+      const title = card.dataset.modalTitle;
+      const image = card.dataset.modalImage;
+      const description = card.dataset.modalDescription;
+      const features = card.dataset.modalFeatures.split(',');
+      const link = card.dataset.modalLink;
+
+      // Populate modal
+      modalImage.src = image;
+      modalImage.alt = title;
+      modalType.textContent = type;
+      modalTitle.textContent = title;
+      modalDescription.textContent = description;
+      modalLink.href = link;
+
+      // Build features
+      modalFeatures.innerHTML = features.map(feature =>
+        `<span class="modal-feature"><i data-lucide="check"></i> ${feature.trim()}</span>`
+      ).join('');
+
+      // Show modal
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+
+      // Reinitialize icons
+      lucide.createIcons();
+
+      // Track modal open
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'view_project', {
+          'event_category': 'portfolio',
+          'event_label': title
+        });
+      }
+    }
+
+    function closePortfolioModal() {
+      const modal = document.getElementById('portfolioModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Close modal on backdrop click
+    document.getElementById('portfolioModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closePortfolioModal();
+      }
+    });
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closePortfolioModal();
+        closeMobileMenu();
+      }
+    });
+
+    // Back to Top Button
+    const backToTopBtn = document.getElementById('backToTop');
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // Show/hide back to top button based on scroll
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
