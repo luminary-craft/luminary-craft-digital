@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Luminary Craft Digital | Church Web Services | Minneapolis-St. Paul</title>
-  
+  <title>Luminary Craft Digital | Multi-Media Specialist | Web, Video, Audio & 3D</title>
+
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Luminary Craft Digital creates exceptional websites for churches and ministries across Minneapolis-St. Paul. Custom design, ongoing support, and media services to illuminate your mission online.">
-  <meta name="keywords" content="church website design, Minneapolis church web development, ministry website, Christian web design, church media services, Baptist church websites, Twin Cities web design">
+  <meta name="description" content="Luminary Craft Digital is a multi-media specialist offering web design, video production, audio engineering, 3D graphics, and broadcast operations. Serving clients locally in Minneapolis-St. Paul and remotely worldwide.">
+  <meta name="keywords" content="multi-media specialist, video production, web design, 3D graphics, audio production, broadcast operations, documentary filmmaking, audiobook production, Minneapolis, remote services, church media, nonprofit media">
   <meta name="author" content="Sebastian Basaldua">
   
   <!-- Open Graph -->
-  <meta property="og:title" content="Luminary Craft Digital | Church Web Services">
-  <meta property="og:description" content="Exceptional digital experiences for churches. Custom websites, ongoing support, and media services.">
+  <meta property="og:title" content="Luminary Craft Digital | Multi-Media Specialist">
+  <meta property="og:description" content="Multi-media specialist: web design, video production, audio engineering, 3D graphics & broadcast operations. Local & remote services available.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://luminarycraftdigital.com">
   <meta property="og:image" content="https://luminarycraftdigital.com/assets/images/social-share.jpg">
@@ -23,13 +23,17 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Luminary Craft Digital | Church Web Services">
-  <meta name="twitter:description" content="Exceptional digital experiences for churches. Custom websites, ongoing support, and media services.">
+  <meta name="twitter:title" content="Luminary Craft Digital | Multi-Media Specialist">
+  <meta name="twitter:description" content="Multi-media specialist: web design, video production, audio engineering, 3D graphics & broadcast operations. Local & remote services available.">
   <meta name="twitter:image" content="https://luminarycraftdigital.com/assets/images/social-share.jpg">
 
   <!-- Canonical URL -->
   <link rel="canonical" href="https://luminarycraftdigital.com">
-  
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/Luminary_Craft_LOGO (Square).png">
+  <link rel="apple-touch-icon" href="assets/images/Luminary_Craft_LOGO (Square).png">
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -105,14 +109,20 @@
     }
 
     .loader-logo {
-      width: 80px;
-      height: 80px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      width: 100px;
+      height: 100px;
+      border-radius: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
       animation: pulse-glow 2s ease-in-out infinite;
+      overflow: hidden;
+    }
+
+    .loader-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .loader-logo svg {
@@ -233,6 +243,17 @@
       text-decoration: none;
     }
 
+    .logo-image {
+      height: 56px;
+      width: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover .logo-image {
+      transform: scale(1.03);
+    }
+
+    /* Fallback text-based logo styles */
     .logo-icon {
       width: 48px;
       height: 48px;
@@ -273,6 +294,12 @@
       text-transform: uppercase;
       letter-spacing: 0.15em;
       margin-top: -2px;
+    }
+
+    /* Footer logo */
+    .footer-brand .logo-image {
+      height: 50px;
+      filter: brightness(1.1);
     }
 
     nav {
@@ -580,6 +607,13 @@
       overflow: hidden;
     }
 
+    .browser-content img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
     .browser-content::before {
       content: '';
       position: absolute;
@@ -587,6 +621,12 @@
       background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⛪%3C/text%3E%3C/svg%3E");
       background-size: 80px;
       opacity: 0.1;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .browser-content.has-image::before {
+      display: none;
     }
 
     .browser-preview-text {
@@ -628,6 +668,45 @@
       bottom: 20%;
       right: -20px;
       animation-delay: 1s;
+    }
+
+    .floating-badge.badge-3 {
+      top: 60%;
+      left: -30px;
+      animation-delay: 1.5s;
+    }
+
+    .floating-badge.badge-4 {
+      top: 5%;
+      right: 10%;
+      animation-delay: 2s;
+    }
+
+    /* Hero Logo Showcase */
+    .hero-logo-showcase {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      position: relative;
+    }
+
+    .hero-main-logo {
+      width: 280px;
+      height: auto;
+      filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+      animation: logoFloat 6s ease-in-out infinite;
+    }
+
+    @media (min-width: 768px) {
+      .hero-main-logo {
+        width: 350px;
+      }
+    }
+
+    @keyframes logoFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(2deg); }
     }
 
     .floating-badge-icon {
@@ -734,6 +813,159 @@
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.1em;
+    }
+
+    /* Featured Work Section */
+    .featured-work {
+      padding: 100px 24px;
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .featured-work::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+    }
+
+    .featured-work-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .featured-work .section-title {
+      color: white;
+    }
+
+    .featured-work .section-description {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .featured-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .featured-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .featured-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(197, 160, 89, 0.2);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .featured-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--gold);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .featured-card.large {
+      grid-column: span 1;
+    }
+
+    @media (min-width: 768px) {
+      .featured-card.large {
+        grid-column: span 2;
+      }
+    }
+
+    .featured-image {
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .featured-card.large .featured-image {
+      height: 250px;
+    }
+
+    .featured-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .featured-card:hover .featured-image img {
+      transform: scale(1.08);
+    }
+
+    .featured-image::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: linear-gradient(to top, rgba(26, 43, 76, 0.9), transparent);
+    }
+
+    .featured-category {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      padding: 6px 12px;
+      background: var(--gold);
+      border-radius: 100px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      z-index: 1;
+    }
+
+    .featured-content {
+      padding: 24px;
+    }
+
+    .featured-title {
+      font-size: 1.25rem;
+      color: white;
+      margin-bottom: 8px;
+    }
+
+    .featured-description {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .featured-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .featured-tag {
+      padding: 4px 10px;
+      background: rgba(197, 160, 89, 0.15);
+      border-radius: 100px;
+      font-size: 0.7rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     /* Portfolio Section */
@@ -955,7 +1187,7 @@
     }
 
     .service-card {
-      padding: 40px 32px;
+      padding: 0;
       background: var(--cream);
       border-radius: 16px;
       border-left: 4px solid var(--gold);
@@ -973,11 +1205,44 @@
       height: 100px;
       background: linear-gradient(135deg, rgba(197, 160, 89, 0.1), transparent);
       border-radius: 0 16px 0 100px;
+      z-index: 1;
     }
 
     .service-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 20px 40px rgba(26, 43, 76, 0.1);
+    }
+
+    .service-image {
+      width: 100%;
+      height: 180px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .service-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .service-card:hover .service-image img {
+      transform: scale(1.08);
+    }
+
+    .service-image::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: linear-gradient(to top, var(--cream), transparent);
+    }
+
+    .service-content {
+      padding: 24px 32px 40px;
     }
 
     .service-icon {
@@ -989,6 +1254,10 @@
       align-items: center;
       justify-content: center;
       margin-bottom: 24px;
+      margin-top: -32px;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 8px 20px rgba(26, 43, 76, 0.2);
       transition: transform 0.3s ease;
     }
 
@@ -1909,7 +2178,7 @@
   <!-- Loader -->
   <div id="loader">
     <div class="loader-logo">
-      <i data-lucide="sparkles"></i>
+      <img src="assets/images/Luminary_Craft_LOGO (Square).png" alt="Luminary Craft">
     </div>
     <div class="loader-text">Luminary Craft</div>
     <div class="loader-progress">
@@ -1937,15 +2206,13 @@
   <header id="header">
     <div class="header-inner">
       <a href="#" class="logo">
-        <div class="logo-icon">
-          <i data-lucide="sparkles"></i>
-        </div>
-        <div class="logo-text">
-          <span class="logo-name">Luminary Craft</span>
-          <span class="logo-tagline">Illuminate Your Mission</span>
-        </div>
+        <img
+          src="assets/images/Luminary_Craft_LOGO with Words (Square and Transparent for light).png"
+          alt="Luminary Craft Digital"
+          class="logo-image"
+        >
       </a>
-      
+
       <nav>
         <a href="#home">Home</a>
         <a href="#portfolio">Portfolio</a>
@@ -1974,63 +2241,73 @@
     <div class="hero-content">
       <div class="hero-text">
         <div class="hero-badge">
-          <i data-lucide="church"></i>
-          <span>Church Web Services</span>
+          <i data-lucide="clapperboard"></i>
+          <span>Multi-Media Specialist</span>
         </div>
-        
+
         <h1>
-          Illuminate your
-          <span>mission</span>
+          Bringing your
+          <span>vision to life</span>
         </h1>
-        
+
         <p class="hero-description">
-          We craft exceptional digital experiences for churches across the Minneapolis–St. Paul area. From custom websites to ongoing support, we help your ministry shine online.
+          From web design and video production to audio engineering, 3D graphics, and broadcast operations—I craft compelling media that connects with your audience. Based in Minneapolis-St. Paul, serving clients locally and remotely worldwide.
         </p>
-        
+
         <div class="hero-buttons">
           <a href="#contact" class="btn btn-primary">
-            Get Started <i data-lucide="arrow-right"></i>
+            Start a Project <i data-lucide="arrow-right"></i>
           </a>
-          <a href="#portfolio" class="btn btn-outline-light">
-            View Our Work
+          <a href="#featured" class="btn btn-outline-light">
+            View My Work
           </a>
         </div>
       </div>
-      
+
       <div class="hero-visual">
         <div class="hero-showcase">
-          <div class="hero-browser">
-            <div class="browser-header">
-              <span class="browser-dot red"></span>
-              <span class="browser-dot yellow"></span>
-              <span class="browser-dot green"></span>
-              <span class="browser-url">fourthbaptist.org</span>
-            </div>
-            <div class="browser-content">
-              <div class="browser-preview-text">
-                <h3>Fourth Baptist Church</h3>
-                <p>Gospel-Centered Ministry</p>
-              </div>
-            </div>
+          <!-- Prominent Logo Display -->
+          <div class="hero-logo-showcase">
+            <img src="assets/images/Luminary_Craft_LOGO.png" alt="Luminary Craft Digital" class="hero-main-logo">
           </div>
-          
+
           <div class="floating-badge badge-1">
             <div class="floating-badge-icon">
-              <i data-lucide="check-circle"></i>
+              <i data-lucide="video"></i>
             </div>
             <div class="floating-badge-text">
-              <h4>Mobile Ready</h4>
-              <p>Responsive Design</p>
+              <h4>Video & Film</h4>
+              <p>Production & Editing</p>
             </div>
           </div>
-          
+
           <div class="floating-badge badge-2">
             <div class="floating-badge-icon">
-              <i data-lucide="zap"></i>
+              <i data-lucide="globe"></i>
             </div>
             <div class="floating-badge-text">
-              <h4>Fast Loading</h4>
-              <p>Optimized Performance</p>
+              <h4>Web Design</h4>
+              <p>Custom Development</p>
+            </div>
+          </div>
+
+          <div class="floating-badge badge-3">
+            <div class="floating-badge-icon">
+              <i data-lucide="box"></i>
+            </div>
+            <div class="floating-badge-text">
+              <h4>3D Graphics</h4>
+              <p>Animation & Motion</p>
+            </div>
+          </div>
+
+          <div class="floating-badge badge-4">
+            <div class="floating-badge-icon">
+              <i data-lucide="radio"></i>
+            </div>
+            <div class="floating-badge-text">
+              <h4>Broadcast</h4>
+              <p>Audio & Operations</p>
             </div>
           </div>
         </div>
@@ -2042,20 +2319,147 @@
   <section class="stats">
     <div class="stats-inner">
       <div class="stat-item">
-        <div class="stat-number">3<span>+</span></div>
-        <div class="stat-label">Churches Served</div>
+        <div class="stat-number">130<span>+</span></div>
+        <div class="stat-label">Motion Graphics</div>
       </div>
       <div class="stat-item">
         <div class="stat-number">3.6<span>M</span></div>
         <div class="stat-label">Broadcast Reach</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number">100<span>%</span></div>
-        <div class="stat-label">Client Satisfaction</div>
+        <div class="stat-number">15<span>x</span></div>
+        <div class="stat-label">Faster with AI</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number">24/7</div>
-        <div class="stat-label">Ongoing Support</div>
+        <div class="stat-number">100<span>%</span></div>
+        <div class="stat-label">Remote Ready</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Work Section -->
+  <section class="featured-work" id="featured">
+    <div class="featured-work-inner">
+      <div class="section-header">
+        <div class="section-label">
+          <i data-lucide="star"></i>
+          Featured Work
+        </div>
+        <h2 class="section-title">Multi-Media Projects</h2>
+        <p class="section-description">
+          From documentary filmmaking and audiobook production to 3D animation and broadcast operations—explore the breadth of my creative work.
+        </p>
+      </div>
+
+      <div class="featured-grid">
+        <!-- WCTS Documentary - Large Card -->
+        <div class="featured-card large">
+          <div class="featured-image">
+            <span class="featured-category">Documentary</span>
+            <img src="assets/images/featured/The_Bible_Station.jpg" alt="WCTS Radio Documentary - The Bible Station" loading="lazy">
+          </div>
+          <div class="featured-content">
+            <h3 class="featured-title">WCTS Radio: "The Bible Station"</h3>
+            <p class="featured-description">
+              Short-form documentary showcasing WCTS Radio's mission and community impact. Utilized AI-assisted workflow to reduce 30 hours of interview sorting to just 2 hours.
+            </p>
+            <div class="featured-tags">
+              <span class="featured-tag">Video Production</span>
+              <span class="featured-tag">Documentary</span>
+              <span class="featured-tag">AI Workflow</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Audiobook -->
+        <div class="featured-card">
+          <div class="featured-image">
+            <span class="featured-category">Audio</span>
+            <img src="assets/images/featured/book-cover.jpg" alt="Breathless Haste Audiobook" loading="lazy">
+          </div>
+          <div class="featured-content">
+            <h3 class="featured-title">Audiobook: "Breathless Haste"</h3>
+            <p class="featured-description">
+              Professional audiobook production for Hope Books featuring audio cleaning and ACX-standard formatting.
+            </p>
+            <div class="featured-tags">
+              <span class="featured-tag">Audio Engineering</span>
+              <span class="featured-tag">ACX Standards</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3D Graphics -->
+        <div class="featured-card">
+          <div class="featured-image">
+            <span class="featured-category">3D Animation</span>
+            <img src="assets/images/featured/clone-trooper.jpg" alt="3D Character Animation" loading="lazy">
+          </div>
+          <div class="featured-content">
+            <h3 class="featured-title">Clone Trooper vs. Alien</h3>
+            <p class="featured-description">
+              Personal 3D character animation project showcasing cinematic lighting and character modeling in Blender.
+            </p>
+            <div class="featured-tags">
+              <span class="featured-tag">Blender</span>
+              <span class="featured-tag">3D Animation</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- TRFF Website -->
+        <div class="featured-card">
+          <div class="featured-image">
+            <span class="featured-category">Web + Video</span>
+            <img src="assets/images/featured/trff-web-thumb.jpg" alt="TRFF Foundation Website" loading="lazy">
+          </div>
+          <div class="featured-content">
+            <h3 class="featured-title">TRFF Foundation Website</h3>
+            <p class="featured-description">
+              Complete website redesign with WordPress/Divi, including video production and photography for site content.
+            </p>
+            <div class="featured-tags">
+              <span class="featured-tag">WordPress</span>
+              <span class="featured-tag">Video</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photography Reel -->
+        <div class="featured-card">
+          <div class="featured-image">
+            <span class="featured-category">Photography</span>
+            <img src="assets/images/featured/photography-reel-thumb.jpg" alt="Photography Portfolio" loading="lazy">
+          </div>
+          <div class="featured-content">
+            <h3 class="featured-title">Photography Portfolio</h3>
+            <p class="featured-description">
+              Professional photography across genres: portraits, family, commercial food, nature, and event photography.
+            </p>
+            <div class="featured-tags">
+              <span class="featured-tag">Portrait</span>
+              <span class="featured-tag">Commercial</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Studio Design -->
+        <div class="featured-card">
+          <div class="featured-image">
+            <span class="featured-category">Studio Design</span>
+            <img src="assets/images/featured/studio-renovation-featured.jpg" alt="Podcast Studio Design" loading="lazy">
+          </div>
+          <div class="featured-content">
+            <h3 class="featured-title">Podcast Studio Renovation</h3>
+            <p class="featured-description">
+              Technical design and implementation for professional podcast studio facilities.
+            </p>
+            <div class="featured-tags">
+              <span class="featured-tag">Studio Design</span>
+              <span class="featured-tag">Technical</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -2065,12 +2469,12 @@
     <div class="portfolio-inner">
       <div class="section-header">
         <div class="section-label">
-          <i data-lucide="briefcase"></i>
-          Our Work
+          <i data-lucide="globe"></i>
+          Web Projects
         </div>
-        <h2 class="section-title">Featured Projects</h2>
+        <h2 class="section-title">Website Portfolio</h2>
         <p class="section-description">
-          Explore our recent church website projects, each crafted with care to serve their unique ministry needs.
+          Custom websites crafted for churches and mission-driven organizations.
         </p>
       </div>
       
@@ -2192,64 +2596,79 @@
       <div class="section-header">
         <div class="section-label">
           <i data-lucide="layers"></i>
-          What We Offer
+          What I Offer
         </div>
-        <h2 class="section-title">Services Tailored for Ministry</h2>
+        <h2 class="section-title">Full-Service Multi-Media Solutions</h2>
         <p class="section-description">
-          We understand the unique needs of churches and design our services to support your mission.
+          From concept to delivery, I provide comprehensive media services—available locally or remotely to clients worldwide.
         </p>
       </div>
-      
+
       <div class="services-grid">
         <div class="service-card">
-          <div class="service-icon">
-            <i data-lucide="globe"></i>
+          <div class="service-image">
+            <img src="assets/images/services/broadcast-operations.jpg" alt="Web design and development" loading="lazy">
           </div>
-          <h3 class="service-title">Website Design</h3>
-          <p class="service-description">
-            Custom, responsive websites built specifically for churches. Clear navigation, beautiful design, and easy content management.
-          </p>
-          <ul class="service-list">
-            <li>Custom branded design tailored to your church identity</li>
-            <li>Mobile-responsive for all devices</li>
-            <li>SEO optimized for local discovery</li>
-            <li>Sermon integration (SermonAudio, SoundCloud)</li>
-            <li>Event calendar and announcements</li>
-          </ul>
+          <div class="service-content">
+            <div class="service-icon">
+              <i data-lucide="globe"></i>
+            </div>
+            <h3 class="service-title">Web Design & Development</h3>
+            <p class="service-description">
+              Custom websites built to connect with your audience. Modern design, responsive layouts, and easy content management.
+            </p>
+            <ul class="service-list">
+              <li>Custom branded design and development</li>
+              <li>Mobile-responsive for all devices</li>
+              <li>SEO optimization for discovery</li>
+              <li>WordPress, custom HTML/CSS/JS</li>
+              <li>Ongoing maintenance and support</li>
+            </ul>
+          </div>
         </div>
-        
+
         <div class="service-card">
-          <div class="service-icon">
-            <i data-lucide="headphones"></i>
+          <div class="service-image">
+            <img src="assets/images/services/media-production-thumb.jpg" alt="Video production and editing" loading="lazy">
           </div>
-          <h3 class="service-title">Ongoing Support</h3>
-          <p class="service-description">
-            Focus on ministry while we handle your website. Regular updates, sermon processing, and dedicated support.
-          </p>
-          <ul class="service-list">
-            <li>Weekly content updates and maintenance</li>
-            <li>Sermon audio/video processing</li>
-            <li>Technical support and troubleshooting</li>
-            <li>Security updates and backups</li>
-            <li>Analytics and performance monitoring</li>
-          </ul>
+          <div class="service-content">
+            <div class="service-icon">
+              <i data-lucide="video"></i>
+            </div>
+            <h3 class="service-title">Video Production</h3>
+            <p class="service-description">
+              Professional video from concept to final cut—documentaries, promotional content, and motion graphics.
+            </p>
+            <ul class="service-list">
+              <li>Documentary and short-form video</li>
+              <li>Motion graphics and animation</li>
+              <li>Video editing and color grading</li>
+              <li>AI-assisted workflow optimization</li>
+              <li>Social media and broadcast formats</li>
+            </ul>
+          </div>
         </div>
-        
+
         <div class="service-card">
-          <div class="service-icon">
-            <i data-lucide="camera"></i>
+          <div class="service-image">
+            <img src="assets/images/services/audio-photo.jpg" alt="Audio engineering and broadcast" loading="lazy">
           </div>
-          <h3 class="service-title">Media Services</h3>
-          <p class="service-description">
-            Professional photography and videography to capture your church community and tell your story authentically.
-          </p>
-          <ul class="service-list">
-            <li>Professional photography sessions</li>
-            <li>Video production and editing</li>
-            <li>Motion graphics and animations</li>
-            <li>Social media ready content</li>
-            <li>Broadcast media support</li>
-          </ul>
+          <div class="service-content">
+            <div class="service-icon">
+              <i data-lucide="radio"></i>
+            </div>
+            <h3 class="service-title">Audio & Broadcast</h3>
+            <p class="service-description">
+              Professional audio production, podcast engineering, and broadcast operations support.
+            </p>
+            <ul class="service-list">
+              <li>Audiobook production (ACX standards)</li>
+              <li>Podcast editing and mixing</li>
+              <li>Broadcast operations support</li>
+              <li>Audio cleanup and mastering</li>
+              <li>Studio design consultation</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -2261,37 +2680,37 @@
       <div class="section-header">
         <div class="section-label">
           <i data-lucide="git-branch"></i>
-          Our Process
+          My Process
         </div>
-        <h2 class="section-title">How We Work</h2>
+        <h2 class="section-title">How I Work</h2>
         <p class="section-description">
-          A streamlined approach that respects your time and delivers exceptional results.
+          A collaborative approach that respects your time and delivers exceptional results—whether local or remote.
         </p>
       </div>
-      
+
       <div class="process-grid">
         <div class="process-card">
           <div class="process-number">1</div>
           <h3>Discovery</h3>
-          <p>We learn about your church, ministry goals, and congregation needs through a personal consultation.</p>
+          <p>I learn about your project, goals, and audience through a personal consultation—in person or via video call.</p>
         </div>
-        
+
         <div class="process-card">
           <div class="process-number">2</div>
-          <h3>Design</h3>
-          <p>We create a custom design that reflects your church's identity and connects with your community.</p>
+          <h3>Concept</h3>
+          <p>I develop a creative direction that aligns with your vision and connects with your target audience.</p>
         </div>
-        
+
         <div class="process-card">
           <div class="process-number">3</div>
-          <h3>Build</h3>
-          <p>We develop your site with modern technology, ensuring it's fast, secure, and easy to manage.</p>
+          <h3>Create</h3>
+          <p>I bring the project to life using modern tools and techniques, with regular check-ins along the way.</p>
         </div>
-        
+
         <div class="process-card">
           <div class="process-number">4</div>
-          <h3>Launch & Support</h3>
-          <p>We launch your site and provide ongoing support to keep your digital presence thriving.</p>
+          <h3>Deliver & Support</h3>
+          <p>I deliver polished final files and provide ongoing support to ensure your project succeeds.</p>
         </div>
       </div>
     </div>
@@ -2305,9 +2724,9 @@
           <i data-lucide="heart"></i>
           Testimonials
         </div>
-        <h2 class="section-title">Trusted by Churches</h2>
+        <h2 class="section-title">Trusted by Organizations</h2>
         <p class="section-description">
-          Hear from the ministries we've had the privilege to serve.
+          Hear from the organizations we've had the privilege to serve.
         </p>
       </div>
       
@@ -2350,9 +2769,9 @@
   <!-- Contact Section -->
   <section class="cta" id="contact">
     <div class="cta-inner">
-      <h2>Ready to illuminate your ministry online?</h2>
+      <h2>Ready to bring your vision to life?</h2>
       <p>
-        Let's discuss how we can help your church connect with your community through a beautiful, functional website.
+        Whether you need a website, video production, audio engineering, or 3D graphics—let's discuss your project. Available for local and remote work.
       </p>
 
       <!-- Contact Form -->
@@ -2360,20 +2779,20 @@
         <div class="form-row">
           <div class="form-group">
             <label for="contactName">Your Name</label>
-            <input type="text" id="contactName" name="name" required placeholder="Pastor John Smith">
+            <input type="text" id="contactName" name="name" required placeholder="John Smith">
           </div>
           <div class="form-group">
             <label for="contactEmail">Email Address</label>
-            <input type="email" id="contactEmail" name="email" required placeholder="pastor@yourchurch.org">
+            <input type="email" id="contactEmail" name="email" required placeholder="human@yourbusiness.com">
           </div>
         </div>
         <div class="form-group">
-          <label for="contactChurch">Church Name</label>
-          <input type="text" id="contactChurch" name="church" placeholder="First Community Church">
+          <label for="contactChurch">Organization / Project</label>
+          <input type="text" id="contactChurch" name="church" placeholder="Your Company or Project Name">
         </div>
         <div class="form-group">
-          <label for="contactMessage">Tell us about your project</label>
-          <textarea id="contactMessage" name="message" rows="4" required placeholder="We're looking for a new website that..."></textarea>
+          <label for="contactMessage">Tell me about your project</label>
+          <textarea id="contactMessage" name="message" rows="4" required placeholder="I'm looking for help with a website, video, audio project..."></textarea>
         </div>
         <button type="submit" class="btn btn-primary btn-submit">
           <span class="btn-text">Send Message</span>
@@ -2435,16 +2854,14 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="#" class="logo">
-            <div class="logo-icon">
-              <i data-lucide="sparkles"></i>
-            </div>
-            <div class="logo-text">
-              <span class="logo-name">Luminary Craft</span>
-              <span class="logo-tagline">Illuminate Your Mission</span>
-            </div>
+            <img
+              src="assets/images/Luminary_Craft_LOGO with Words (Square and Transparent for dark).png"
+              alt="Luminary Craft Digital"
+              class="logo-image"
+            >
           </a>
           <p>
-            Crafting exceptional digital experiences for churches across the Minneapolis–St. Paul area. We illuminate your mission with thoughtful design and dedicated support.
+            Multi-media specialist crafting compelling web, video, audio, and 3D content. Based in Minneapolis-St. Paul, serving clients locally and remotely worldwide.
           </p>
           <div class="footer-contact">
             <a href="mailto:sebastian@luminarycraftdigital.com">
@@ -2453,36 +2870,41 @@
             </a>
             <a href="#">
               <i data-lucide="map-pin"></i>
-              Plymouth, Minnesota
+              Minneapolis-St. Paul, MN
+            </a>
+            <a href="#">
+              <i data-lucide="wifi"></i>
+              Remote Services Available
             </a>
           </div>
         </div>
-        
+
         <div class="footer-column">
           <h4>Quick Links</h4>
           <ul class="footer-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#featured">Featured Work</a></li>
+            <li><a href="#portfolio">Web Projects</a></li>
             <li><a href="#services">Services</a></li>
-            <li><a href="#process">Process</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
-        
+
         <div class="footer-column">
           <h4>Services</h4>
           <ul class="footer-links">
-            <li><a href="#services">Website Design</a></li>
-            <li><a href="#services">Ongoing Support</a></li>
-            <li><a href="#services">Media Services</a></li>
-            <li><a href="#services">Sermon Processing</a></li>
+            <li><a href="#services">Web Design</a></li>
+            <li><a href="#services">Video Production</a></li>
+            <li><a href="#services">Audio Engineering</a></li>
+            <li><a href="#services">3D Graphics</a></li>
+            <li><a href="#services">Broadcast Operations</a></li>
           </ul>
         </div>
       </div>
       
       <div class="footer-bottom">
         <p>© 2026 Luminary Craft Digital. All rights reserved.</p>
-        <p>Crafted with care for ministry.</p>
+        <p>Multi-media services for mission-driven organizations.</p>
       </div>
     </div>
   </footer>
